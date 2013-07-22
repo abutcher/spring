@@ -17,8 +17,8 @@
 	<p>I WROTE THIS APP IN '94</p>
       </div>
 
-      <form:form commandName="newMember" id="reg">
-	<h2>Member Registration</h2>
+      <form:form commandName="newBeer" id="reg">
+	<h2>Beer Registration</h2>
 	<p>Enforces annotation-based constraints defined on the model class.</p>
 	<table>
 	  <tbody>
@@ -28,16 +28,10 @@
 	      <td><form:errors class="invalid" path="name"/></td>
 	    </tr>
 	    <tr>
-	      <td><form:label path="email">Email:</form:label></td>
-	      <td><form:input path="email"/></td>
-	      <td><form:errors class="invalid" path="email"/></td>
+	      <td><form:label path="rating">Rating:</form:label></td>
+	      <td><form:input path="rating"/></td>
+	      <td><form:errors class="invalid" path="rating"/></td>
 	    </tr>
-	    <tr>
-	      <td><form:label path="phoneNumber">Phone #:</form:label>
-	      <td><form:input path="phoneNumber"/></td>
-	      <td><form:errors class="invalid" path="phoneNumber"/></td>
-	    </tr>
-
 	  </tbody>
 	  <br />
 	</table>
@@ -49,10 +43,10 @@
 	  </tr>
 	</table>
       </form:form>
-      <h2>Members</h2>
+      <h2>Beers</h2>
       <c:choose>
-	<c:when test="${members.size()==0}">
-	  <em>No registered members.</em>
+	<c:when test="${beers.size()==0}">
+	  <em>No registered beers.</em>
 	</c:when>
 	<c:otherwise>
 	  <table class="simpletablestyle">
@@ -60,26 +54,24 @@
 	      <tr>
 		<th>Id</th>
 		<th>Name</th>
-		<th>Email</th>
-		<th>Phone #</th>
+		<th>Rating</th>
 		<th>REST URL</th>
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <c:forEach items="${members}" var="member">
+	      <c:forEach items="${beers}" var="beer">
 		<tr>
-		  <td>${member.id}</td>
-		  <td>${member.name}</td>
-		  <td>${member.email}</td>
-		  <td>${member.phoneNumber}</td>
-		  <td><a href="<c:url value="/rest/members/${member.id}"/>">/rest/members/${member.id}</a></td>
+		  <td>${beer.id}</td>
+		  <td>${beer.name}</td>
+		  <td>${beer.rating}</td>
+		  <td><a href="<c:url value="/rest/beers/${beer.id}"/>">/rest/beers/${beer.id}</a></td>
 	      </c:forEach>
 	    </tbody>
 	  </table>
 	  <table class="table table-striped">
 	    <tr>
 	      <td>
-		REST URL for all members: <a href="<c:url value="/rest/members"/>">/rest/members</a>
+		REST URL for all beers: <a href="<c:url value="/rest/beers"/>">/rest/beers</a>
 	      </td>
 	    </tr>
 	  </table>
